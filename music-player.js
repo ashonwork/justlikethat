@@ -1,46 +1,52 @@
 let audio = null;
 let isPlaying = false;
 
+function getOrCreateAudio() {
+    if (!audio) {
+        audio = new Audio('media/music/untilIFoundYou.mp3');
+        audio.loop = true;
+        audio.volume = 0.5;
+        audio.preload = 'auto';
+    }
+    return audio;
+}
+
 function initMusicPlayer() {
     const musicState = localStorage.getItem('musicPlaying');
     const savedTime = localStorage.getItem('musicTime');
     
-    if (!audio) {
-        audio = new Audio('media/music/untilIFoundYou.mp3');
-        audio.loop = true;
-        audio.volume = 0.5;
-    }
-    
     if (musicState === 'true') {
+        const aud = getOrCreateAudio();
         if (savedTime) {
-            audio.currentTime = parseFloat(savedTime);
+            aud.currentTime = parseFloat(savedTime);
         }
-        audio.play().then(() => {
+        aud.play().then(() => {
             isPlaying = true;
             updateMusicButton();
-        }).catch(e => console.log('Autoplay prevented'));
+        }).catch(e => {
+            console.log('Autoplay prevented');
+            isPlaying = false;
+            updateMusicButton();
+        });
     }
     
     setInterval(() => {
-        if (isPlaying && audio) {
+        if (isPlaying && audio && !audio.paused) {
             localStorage.setItem('musicTime', audio.currentTime);
+            localStorage.setItem('musicPlaying', 'true');
         }
-    }, 500);
+    }, 300);
 }
 
 function toggleMusic() {
-    if (!audio) {
-        audio = new Audio('media/music/untilIFoundYou.mp3');
-        audio.loop = true;
-        audio.volume = 0.5;
-    }
+    const aud = getOrCreateAudio();
     
     if (isPlaying) {
-        audio.pause();
+        aud.pause();
         isPlaying = false;
         localStorage.setItem('musicPlaying', 'false');
     } else {
-        audio.play().then(() => {
+        aud.play().then(() => {
             isPlaying = true;
             localStorage.setItem('musicPlaying', 'true');
             updateMusicButton();
@@ -60,14 +66,21 @@ function updateMusicButton() {
 document.addEventListener('DOMContentLoaded', initMusicPlayer);
 
 window.addEventListener('beforeunload', () => {
-    if (isPlaying && audio) {
+    if (isPlaying && audio && !audio.paused) {
         localStorage.setItem('musicTime', audio.currentTime);
         localStorage.setItem('musicPlaying', 'true');
     }
 });
 
 window.addEventListener('pagehide', () => {
-    if (isPlaying && audio) {
+    if (isPlaying && audio && !audio.paused) {
+        localStorage.setItem('musicTime', audio.currentTime);
+        localStorage.setItem('musicPlaying', 'true');
+    }
+});
+
+window.addEventListener('visibilitychange', () => {
+    if (document.hidden && isPlaying && audio && !audio.paused) {
         localStorage.setItem('musicTime', audio.currentTime);
         localStorage.setItem('musicPlaying', 'true');
     }
