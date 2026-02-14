@@ -2,39 +2,49 @@ let audio = null;
 let isPlaying = false;
 
 function initMusicPlayer() {
-    audio = new Audio('media/music/untilIFoundYou.mp3');
-    audio.loop = true;
-    audio.volume = 0.5;
-    
     const musicState = localStorage.getItem('musicPlaying');
+    const savedTime = localStorage.getItem('musicTime');
+    
+    if (!audio) {
+        audio = new Audio('media/music/untilIFoundYou.mp3');
+        audio.loop = true;
+        audio.volume = 0.5;
+    }
+    
     if (musicState === 'true') {
-        const savedTime = localStorage.getItem('musicTime');
         if (savedTime) {
             audio.currentTime = parseFloat(savedTime);
         }
-        audio.play().catch(e => console.log('Autoplay prevented'));
-        isPlaying = true;
-        updateMusicButton();
+        audio.play().then(() => {
+            isPlaying = true;
+            updateMusicButton();
+        }).catch(e => console.log('Autoplay prevented'));
     }
     
     setInterval(() => {
-        if (isPlaying) {
+        if (isPlaying && audio) {
             localStorage.setItem('musicTime', audio.currentTime);
         }
-    }, 1000);
+    }, 500);
 }
 
 function toggleMusic() {
-    const btn = document.getElementById('musicToggle');
+    if (!audio) {
+        audio = new Audio('media/music/untilIFoundYou.mp3');
+        audio.loop = true;
+        audio.volume = 0.5;
+    }
     
     if (isPlaying) {
         audio.pause();
         isPlaying = false;
         localStorage.setItem('musicPlaying', 'false');
     } else {
-        audio.play().catch(e => console.log('Play failed'));
-        isPlaying = true;
-        localStorage.setItem('musicPlaying', 'true');
+        audio.play().then(() => {
+            isPlaying = true;
+            localStorage.setItem('musicPlaying', 'true');
+            updateMusicButton();
+        }).catch(e => console.log('Play failed'));
     }
     
     updateMusicButton();
@@ -50,6 +60,13 @@ function updateMusicButton() {
 document.addEventListener('DOMContentLoaded', initMusicPlayer);
 
 window.addEventListener('beforeunload', () => {
+    if (isPlaying && audio) {
+        localStorage.setItem('musicTime', audio.currentTime);
+        localStorage.setItem('musicPlaying', 'true');
+    }
+});
+
+window.addEventListener('pagehide', () => {
     if (isPlaying && audio) {
         localStorage.setItem('musicTime', audio.currentTime);
         localStorage.setItem('musicPlaying', 'true');
