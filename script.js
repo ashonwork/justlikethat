@@ -30,6 +30,37 @@ envelope.addEventListener('click', () => {
     }, 800);
 });
 
+// Password check
+function checkPassword() {
+    const input = document.getElementById('passwordInput');
+    const error = document.getElementById('passwordError');
+    const answer = input.value.trim().toLowerCase();
+    
+    if (answer === 'blue') {
+        document.getElementById('passwordScreen').style.display = 'none';
+        document.getElementById('contentScreen').classList.remove('hidden');
+    } else {
+        error.textContent = 'Ahhha try again baby 😘';
+        error.style.display = 'block';
+        input.value = '';
+        setTimeout(() => {
+            error.style.display = 'none';
+        }, 2000);
+    }
+}
+
+// Allow Enter key to submit
+document.addEventListener('DOMContentLoaded', () => {
+    const input = document.getElementById('passwordInput');
+    if (input) {
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+    }
+});
+
 // Surprise button
 const surpriseBtn = document.getElementById('surpriseBtn');
 const surpriseContent = document.getElementById('surpriseContent');

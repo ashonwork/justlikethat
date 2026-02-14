@@ -16,6 +16,15 @@
     <div class="hearts-container"></div>
     
     <div class="main-content hidden" id="mainContent">
+        <div class="password-screen" id="passwordScreen">
+            <h2 class="password-title">One Last Thing... 💕</h2>
+            <p class="password-question">Which color of my shirt is your fav?</p>
+            <input type="text" id="passwordInput" class="password-input" placeholder="Enter your answer...">
+            <button class="password-btn" onclick="checkPassword()">Submit ❤️</button>
+            <p class="password-error" id="passwordError"></p>
+        </div>
+        
+        <div class="content-screen hidden" id="contentScreen">
         <h1 class="title">Happy Valentine's Day!</h1>
         <button class="surprise-btn" id="surpriseBtn">Click for a Surprise!</button>
         <div class="surprise-content hidden" id="surpriseContent">
@@ -44,6 +53,7 @@
                 </div>
             </div>
             <button class="continue-final-btn" onclick="location.href='proposal.html'">One More Thing... 💖</button>
+        </div>
         </div>
     </div>
 
