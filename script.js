@@ -36,7 +36,7 @@ function checkPassword() {
     const error = document.getElementById('passwordError');
     const answer = input.value.trim().toLowerCase();
     
-    if (answer === 'blue') {
+    if (answer === 'biskoot' || answer === 'biscuit') {
         document.getElementById('passwordScreen').style.display = 'none';
         document.getElementById('contentScreen').classList.remove('hidden');
     } else {
