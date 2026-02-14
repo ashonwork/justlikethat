@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.quiz-container {
+    width: 100%;
+    max-width: 500px;
+}
+
+.quiz-box {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.quiz-title {
+    font-size: 28px;
+    color: #c71585;
+    margin-bottom: 20px;
+}
+
+.question {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.option-btn {
+    background: white;
+    border: 2px solid #ff6b9d;
+    color: #c71585;
+    padding: 14px 20px;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Georgia', serif;
+    touch-action: manipulation;
+}
+
+.option-btn:hover {
+    background: #ff6b9d;
+    color: white;
+    transform: translateX(5px);
+}
+
+.option-btn:active {
+    transform: scale(0.98);
+}
+
+.feedback {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    min-height: 30px;
+}
+
+.feedback.wrong {
+    color: #ff1493;
+    animation: shake 0.5s;
+}
+
+.feedback.correct {
+    color: #28a745;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 480px) {
+    .quiz-box {
+        padding: 30px 20px;
+    }
+
+    .quiz-title {
+        font-size: 24px;
+    }
+
+    .question {
+        font-size: 18px;
+    }
+
+    .option-btn {
+        font-size: 15px;
+        padding: 12px 16px;
+    }
+}

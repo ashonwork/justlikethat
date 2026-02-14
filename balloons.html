@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pop the Balloons ❤️</title>
+    <link rel="stylesheet" href="music-player.css">
+    <link rel="stylesheet" href="balloons-style.css">
+</head>
+<body>
+    <div class="music-player">
+        <button class="music-toggle" id="musicToggle" onclick="toggleMusic()">🔇</button>
+        <div class="music-info">Until I Found You</div>
+    </div>
+    
+    <div class="balloons-container">
+        <h1 class="title">Pop All Balloons to Continue</h1>
+        <div class="message-display" id="messageDisplay"></div>
+        <div class="balloons-area" id="balloonsArea"></div>
+        <button class="next-btn" id="nextBtn" style="display: none;" onclick="location.href='fortune.html'">Continue ❤️</button>
+    </div>
+    <script src="music-player.js"></script>
+    <script src="balloons-script.js"></script>
+</body>
+</html>

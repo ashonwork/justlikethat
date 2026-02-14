@@ -1,0 +1,226 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+    scroll-behavior: smooth;
+}
+
+#bgVideo {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    object-fit: cover;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    padding: 20px;
+}
+
+.scroll-hint {
+    position: absolute;
+    bottom: 30px;
+    color: white;
+    font-size: 14px;
+    animation: bounce 2s infinite;
+}
+
+.scroll-hint::after {
+    content: '\2193';
+    display: block;
+    font-size: 24px;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.words-section {
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ffc3a0 0%, #ffafbd 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.words-container {
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.words-title {
+    font-size: 36px;
+    color: #c71585;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.love-message {
+    font-size: 18px;
+    color: #333;
+    line-height: 1.8;
+    margin: 20px 0;
+}
+
+.heart-icon {
+    font-size: 40px;
+    margin: 20px 0;
+    animation: pulse 1.5s infinite;
+}
+
+.continue-btn {
+    background: linear-gradient(135deg, #ff6b9d 0%, #c71585 100%);
+    color: white;
+    text-decoration: none;
+    padding: 16px 40px;
+    font-size: 18px;
+    border-radius: 50px;
+    box-shadow: 0 8px 25px rgba(199, 21, 133, 0.5);
+    transition: all 0.3s;
+    display: inline-block;
+    margin-top: 30px;
+    touch-action: manipulation;
+}
+
+.continue-btn:active {
+    transform: scale(0.95);
+}
+
+.main-title {
+    font-size: 42px;
+    color: white;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
+    margin-bottom: 20px;
+    animation: fadeInDown 1s;
+}
+
+.subtitle {
+    font-size: 20px;
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    margin-bottom: 40px;
+    animation: fadeInUp 1s;
+}
+
+.enter-btn {
+    background: linear-gradient(135deg, #ff6b9d 0%, #c71585 100%);
+    color: white;
+    text-decoration: none;
+    padding: 16px 40px;
+    font-size: 18px;
+    border-radius: 50px;
+    box-shadow: 0 8px 25px rgba(199, 21, 133, 0.5);
+    transition: all 0.3s;
+    animation: pulse 2s infinite;
+    touch-action: manipulation;
+}
+
+.enter-btn:active {
+    transform: scale(0.95);
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 8px 25px rgba(199, 21, 133, 0.5);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 12px 35px rgba(199, 21, 133, 0.7);
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 32px;
+    }
+    
+    .subtitle {
+        font-size: 16px;
+    }
+    
+    .enter-btn {
+        font-size: 16px;
+        padding: 14px 35px;
+    }
+    
+    .words-title {
+        font-size: 28px;
+    }
+    
+    .love-message {
+        font-size: 16px;
+    }
+    
+    .words-container {
+        padding: 30px 20px;
+    }
+}

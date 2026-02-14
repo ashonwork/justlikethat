@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chalo ab inke answers doooooo ❤️</title>
+    <link rel="stylesheet" href="music-player.css">
+    <link rel="stylesheet" href="quiz-style.css">
+</head>
+<body>
+    <div class="music-player">
+        <button class="music-toggle" id="musicToggle" onclick="toggleMusic()">🔇</button>
+        <div class="music-info">Until I Found You</div>
+    </div>
+    
+    <div class="quiz-container">
+        <div class="quiz-box" id="quiz1">
+            <h2>Chalo ab inke answers doooooo ❤️</h2>
+            <h2 class="quiz-title">Question 1</h2>
+            <p class="question">Who loves you the most?</p>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(1, 'a')">a) Ash</button>
+                <button class="option-btn" onclick="checkAnswer(1, 'b')">b) Ashi</button>
+                <button class="option-btn" onclick="checkAnswer(1, 'c')">c) Ashish</button>
+                <button class="option-btn" onclick="checkAnswer(1, 'd')">d) Kutu</button>
+                <button class="option-btn" onclick="checkAnswer(1, 'e')">e) All of these</button>
+            </div>
+            <p class="feedback" id="feedback1"></p>
+        </div>
+
+        <div class="quiz-box hidden" id="quiz2">
+            <h2 class="quiz-title">Question 2</h2>
+            <p class="question">What makes you the most special person in my life?</p>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(2, 'a')">a) Your smile</button>
+                <button class="option-btn" onclick="checkAnswer(2, 'b')">b) Your kindness</button>
+                <button class="option-btn" onclick="checkAnswer(2, 'c')">c) Your love</button>
+                <button class="option-btn" onclick="checkAnswer(2, 'd')">d) Everything about you</button>
+            </div>
+            <p class="feedback" id="feedback2"></p>
+        </div>
+
+        <div class="quiz-box hidden" id="quiz3">
+            <h2 class="quiz-title">Question 3</h2>
+            <p class="question">How much do I love you?</p>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(3, 'a')">a) A lot</button>
+                <button class="option-btn" onclick="checkAnswer(3, 'b')">b) So much</button>
+                <button class="option-btn" onclick="checkAnswer(3, 'c')">c) More than words can say</button>
+                <button class="option-btn" onclick="checkAnswer(3, 'd')">d) To infinity and beyond</button>
+            </div>
+            <p class="feedback" id="feedback3"></p>
+        </div>
+
+        <div class="quiz-box hidden" id="quiz4">
+            <h2 class="quiz-title">Final Question</h2>
+            <p class="question">Will you be my Valentine forever?</p>
+            <div class="options">
+                <button class="option-btn" onclick="checkAnswer(4, 'a')">a) Yes</button>
+                <button class="option-btn" onclick="checkAnswer(4, 'b')">b) Absolutely</button>
+                <button class="option-btn" onclick="checkAnswer(4, 'c')">c) Of course</button>
+                <button class="option-btn" onclick="checkAnswer(4, 'd')">d) All of the above</button>
+            </div>
+            <p class="feedback" id="feedback4"></p>
+        </div>
+    </div>
+
+    <script src="music-player.js"></script>
+    <script src="quiz-script.js"></script>
+</body>
+</html>

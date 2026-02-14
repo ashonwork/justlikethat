@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scratch to Reveal ❤️</title>
+    <link rel="stylesheet" href="music-player.css">
+    <link rel="stylesheet" href="scratch-style.css">
+</head>
+<body>
+    <div class="music-player">
+        <button class="music-toggle" id="musicToggle" onclick="toggleMusic()">🔇</button>
+        <div class="music-info">Until I Found You</div>
+    </div>
+    
+    <div class="scratch-container">
+        <h1 class="title">Scratch to Reveal Your Message</h1>
+        <div class="card-wrapper">
+            <canvas id="scratchCanvas"></canvas>
+            <div class="hidden-message">
+                <h2>You Are My</h2>
+                <h1>EVERYTHING</h1>
+                <p>💕</p>
+            </div>
+        </div>
+        <p class="instruction">Use your finger to scratch</p>
+        <button class="next-btn" id="nextBtn" style="display: none;" onclick="location.href='puzzle.html'">Continue ❤️</button>
+    </div>
+    <script src="music-player.js"></script>
+    <script src="scratch-script.js"></script>
+</body>
+</html>

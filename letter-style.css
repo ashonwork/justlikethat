@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg, #ffc3a0 0%, #ffafbd 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.letter-container {
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+}
+
+.letter-paper {
+    background: #fffef0;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    border: 1px solid #e0d5b7;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.letter-title {
+    color: #c71585;
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.letter-content {
+    color: #333;
+    font-size: 18px;
+    line-height: 1.8;
+    min-height: 200px;
+}
+
+.letter-signature {
+    margin-top: 30px;
+    text-align: right;
+    font-size: 20px;
+    color: #c71585;
+    font-style: italic;
+}
+
+.next-btn {
+    background: linear-gradient(135deg, #ff6b9d 0%, #c71585 100%);
+    color: white;
+    border: none;
+    padding: 16px 40px;
+    font-size: 18px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(199, 21, 133, 0.5);
+    font-family: 'Georgia', serif;
+}
+
+.next-btn:active {
+    transform: scale(0.95);
+}
+
+@media (max-width: 480px) {
+    .letter-paper {
+        padding: 25px;
+    }
+    
+    .letter-title {
+        font-size: 22px;
+    }
+    
+    .letter-content {
+        font-size: 16px;
+    }
+}

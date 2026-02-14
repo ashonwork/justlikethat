@@ -1,0 +1,350 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    position: relative;
+    padding: 10px;
+}
+
+.hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.heart {
+    position: absolute;
+    font-size: 20px;
+    animation: float 4s ease-in infinite;
+    opacity: 0;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.start-screen {
+    text-align: center;
+    z-index: 10;
+}
+
+.envelope {
+    width: 180px;
+    height: 126px;
+    position: relative;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: transform 0.3s;
+    touch-action: manipulation;
+}
+
+.envelope:active {
+    transform: scale(0.95);
+}
+
+.envelope-body {
+    width: 180px;
+    height: 108px;
+    background: #fff;
+    position: absolute;
+    bottom: 0;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.envelope-flap {
+    width: 0;
+    height: 0;
+    border-left: 90px solid transparent;
+    border-right: 90px solid transparent;
+    border-bottom: 72px solid #ffcccb;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: top;
+    transition: transform 0.5s;
+    z-index: 2;
+}
+
+.envelope.open .envelope-flap {
+    transform: rotateX(180deg);
+}
+
+.letter {
+    width: 144px;
+    height: 90px;
+    background: #ffe4e1;
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: #c71585;
+    font-weight: bold;
+    transition: transform 0.5s;
+    z-index: 1;
+}
+
+.envelope.open .letter {
+    transform: translateY(-50px);
+}
+
+.instruction {
+    color: white;
+    margin-top: 160px;
+    font-size: 16px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    padding: 0 20px;
+}
+
+.main-content {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px 20px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    max-width: 90%;
+    width: 100%;
+    z-index: 10;
+    animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.title {
+    font-size: 32px;
+    color: #c71585;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.message-box {
+    margin: 30px 0;
+}
+
+.message {
+    font-size: 16px;
+    color: #333;
+    margin: 12px 0;
+    line-height: 1.6;
+}
+
+.love-text {
+    font-size: 24px;
+    color: #ff1493;
+    font-weight: bold;
+    margin-top: 20px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.surprise-btn {
+    background: linear-gradient(135deg, #ff6b9d 0%, #c71585 100%);
+    color: white;
+    border: none;
+    padding: 14px 35px;
+    font-size: 16px;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(199, 21, 133, 0.4);
+    transition: all 0.3s;
+    touch-action: manipulation;
+}
+
+.surprise-btn:active {
+    transform: scale(0.95);
+}
+
+.surprise-content {
+    margin-top: 30px;
+    animation: fadeIn 1s;
+}
+
+.voice-title {
+    font-size: 28px;
+    color: #c71585;
+    margin-bottom: 20px;
+}
+
+.voice-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.voice-card {
+    background: rgba(255, 182, 193, 0.2);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.voice-label {
+    font-size: 18px;
+    color: #c71585;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+audio {
+    width: 100%;
+    outline: none;
+}
+
+audio::-webkit-media-controls-panel {
+    background: linear-gradient(135deg, #ff6b9d 0%, #c71585 100%);
+}
+
+.photo-frame {
+    width: 100%;
+    max-width: 280px;
+    height: 280px;
+    margin: 20px auto;
+    border: 8px solid #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    background: linear-gradient(135deg, #ffeef8 0%, #ffe4f3 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo-placeholder {
+    font-size: 20px;
+    color: #c71585;
+    text-align: center;
+    line-height: 1.8;
+    padding: 10px;
+}
+
+.final-message {
+    font-size: 22px;
+    color: #ff1493;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.continue-final-btn {
+    background: linear-gradient(135deg, #ff6b9d 0%, #c71585 100%);
+    color: white;
+    border: none;
+    padding: 16px 40px;
+    font-size: 18px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(199, 21, 133, 0.5);
+    font-family: 'Georgia', serif;
+    margin-top: 30px;
+}
+
+.continue-final-btn:active {
+    transform: scale(0.95);
+}
+
+.proposal-section {
+    margin-top: 40px;
+    padding: 30px;
+    background: rgba(255, 182, 193, 0.1);
+    border-radius: 20px;
+}
+
+.proposal-text {
+    text-align: left;
+    color: #333;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.proposal-text p {
+    margin: 8px 0;
+    font-size: 16px;
+}
+
+.proposal-text strong {
+    color: #c71585;
+    font-size: 20px;
+}
+
+.final-question {
+    font-size: 24px;
+    color: #ff1493;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.button-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.yes-btn, .no-btn {
+    padding: 16px 40px;
+    font-size: 20px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.yes-btn {
+    background: linear-gradient(135deg, #ff6b9d 0%, #c71585 100%);
+    color: white;
+    box-shadow: 0 8px 25px rgba(199, 21, 133, 0.5);
+}
+
+.yes-btn:active {
+    transform: scale(0.95);
+}
+
+.no-btn {
+    background: #ddd;
+    color: #666;
+}
+
+.response-message {
+    margin-top: 30px;
+    text-align: center;
+    min-height: 50px;
+}
+
+.hidden {
+    display: none;
+}

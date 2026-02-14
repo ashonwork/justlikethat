@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Memories ❤️</title>
+    <link rel="stylesheet" href="music-player.css">
+    <link rel="stylesheet" href="memories-style.css">
+</head>
+<body>
+    <div class="music-player">
+        <button class="music-toggle" id="musicToggle" onclick="toggleMusic()">🔇</button>
+        <div class="music-info">Until I Found You</div>
+    </div>
+    
+    <div class="memories-container">
+        <h1 class="title">Our Beautiful Journey</h1>
+        
+        <div class="counter-section">
+            <div class="counter-box">
+                <div class="counter-number" id="daysCounter">0</div>
+                <div class="counter-label">Days Together</div>
+            </div>
+            <div class="counter-box">
+                <div class="counter-number" id="memoriesCounter">0</div>
+                <div class="counter-label">Memories Made</div>
+            </div>
+            <div class="counter-box">
+                <div class="counter-number" id="kissesCounter">0</div>
+                <div class="counter-label">Kisses Shared</div>
+            </div>
+        </div>
+
+        <div class="gallery-section">
+            <h2 class="section-title">Our Moments</h2>
+            <div class="polaroid-wall" id="polaroidWall"></div>
+        </div>
+
+        <button class="next-btn" onclick="location.href='timeline.html'">Continue ❤️</button>
+    </div>
+    <script src="music-player.js"></script>
+    <script src="memories-script.js"></script>
+</body>
+</html>
