@@ -1,5 +1,6 @@
 let audio = null;
 let isPlaying = false;
+let hasInteracted = false;
 
 function getOrCreateAudio() {
     if (!audio) {
@@ -15,20 +16,14 @@ function initMusicPlayer() {
     const musicState = localStorage.getItem('musicPlaying');
     const savedTime = localStorage.getItem('musicTime');
     
-    if (musicState === 'true') {
-        const aud = getOrCreateAudio();
-        if (savedTime) {
-            aud.currentTime = parseFloat(savedTime);
-        }
-        aud.play().then(() => {
-            isPlaying = true;
-            updateMusicButton();
-        }).catch(e => {
-            console.log('Autoplay prevented');
-            isPlaying = false;
-            updateMusicButton();
-        });
+    getOrCreateAudio();
+    
+    if (musicState === 'true' && savedTime) {
+        audio.currentTime = parseFloat(savedTime);
     }
+    
+    document.body.addEventListener('click', resumeMusic, { once: false });
+    document.body.addEventListener('touchstart', resumeMusic, { once: false });
     
     setInterval(() => {
         if (isPlaying && audio && !audio.paused) {
@@ -38,8 +33,24 @@ function initMusicPlayer() {
     }, 300);
 }
 
+function resumeMusic() {
+    const musicState = localStorage.getItem('musicPlaying');
+    if (musicState === 'true' && !isPlaying) {
+        const savedTime = localStorage.getItem('musicTime');
+        if (savedTime && audio) {
+            audio.currentTime = parseFloat(savedTime);
+        }
+        audio.play().then(() => {
+            isPlaying = true;
+            hasInteracted = true;
+            updateMusicButton();
+        }).catch(e => console.log('Play prevented'));
+    }
+}
+
 function toggleMusic() {
     const aud = getOrCreateAudio();
+    hasInteracted = true;
     
     if (isPlaying) {
         aud.pause();
@@ -74,13 +85,6 @@ window.addEventListener('beforeunload', () => {
 
 window.addEventListener('pagehide', () => {
     if (isPlaying && audio && !audio.paused) {
-        localStorage.setItem('musicTime', audio.currentTime);
-        localStorage.setItem('musicPlaying', 'true');
-    }
-});
-
-window.addEventListener('visibilitychange', () => {
-    if (document.hidden && isPlaying && audio && !audio.paused) {
         localStorage.setItem('musicTime', audio.currentTime);
         localStorage.setItem('musicPlaying', 'true');
     }
