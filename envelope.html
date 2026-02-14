@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day ❤️</title>
+    <link rel="stylesheet" href="music-player.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="music-player">
+        <button class="music-toggle" id="musicToggle" onclick="toggleMusic()">🔇</button>
+        <div class="music-info">Until I Found You</div>
+    </div>
+    
+    <div class="hearts-container"></div>
+    
+    <div class="main-content hidden" id="mainContent">
+        <div class="password-screen" id="passwordScreen">
+            <h2 class="password-title">One Last Thing... 💕</h2>
+            <p class="password-question">Which color of my shirt is your fav?</p>
+            <input type="text" id="passwordInput" class="password-input" placeholder="Enter your answer...">
+            <button class="password-btn" onclick="checkPassword()">Submit ❤️</button>
+            <p class="password-error" id="passwordError"></p>
+        </div>
+        
+        <div class="content-screen hidden" id="contentScreen">
+        <h1 class="title">Happy Valentine's Day!</h1>
+        <button class="surprise-btn" id="surpriseBtn">Click for a Surprise!</button>
+        <div class="surprise-content hidden" id="surpriseContent">
+            <h2 class="voice-title">Listen to My Heart 🎧</h2>
+            <div class="voice-messages">
+                <div class="voice-card">
+                    <p class="voice-label">Jeena Jeena 💕</p>
+                    <audio controls controlsList="nodownload">
+                        <source src="media/voice/jeenajeena.m4a" type="audio/mp4">
+                        Your browser does not support audio.
+                    </audio>
+                </div>
+                <div class="voice-card">
+                    <p class="voice-label">Lae Dooba 💖</p>
+                    <audio controls controlsList="nodownload">
+                        <source src="media/voice/laedooba.m4a" type="audio/mp4">
+                        Your browser does not support audio.
+                    </audio>
+                </div>
+                <div class="voice-card">
+                    <p class="voice-label">My Confession 💗</p>
+                    <audio controls controlsList="nodownload">
+                        <source src="media/voice/confess.m4a" type="audio/mp4">
+                        Your browser does not support audio.
+                    </audio>
+                </div>
+            </div>
+            <button class="continue-final-btn" onclick="location.href='proposal.html'">One More Thing... 💖</button>
+        </div>
+        </div>
+    </div>
+
+    <div class="start-screen" id="startScreen">
+        <div class="envelope" id="envelope">
+            <div class="envelope-flap"></div>
+            <div class="envelope-body"></div>
+            <div class="letter">Click to Open</div>
+        </div>
+        <p class="instruction">Click the envelope to open your surprise</p>
+    </div>
+
+    <script src="music-player.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

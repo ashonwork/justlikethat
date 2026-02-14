@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Valentine's Day ❤️</title>
+    <title>For You ❤️</title>
     <link rel="stylesheet" href="music-player.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="home-style.css">
 </head>
 <body>
     <div class="music-player">
@@ -13,60 +13,46 @@
         <div class="music-info">Until I Found You</div>
     </div>
     
-    <div class="hearts-container"></div>
+    <video autoplay muted loop playsinline id="bgVideo">
+        <source src="media/videos/dits1.mp4" type="video/mp4">
+    </video>
     
-    <div class="main-content hidden" id="mainContent">
-        <div class="password-screen" id="passwordScreen">
-            <h2 class="password-title">One Last Thing... 💕</h2>
-            <p class="password-question">Which color of my shirt is your fav?</p>
-            <input type="text" id="passwordInput" class="password-input" placeholder="Enter your answer...">
-            <button class="password-btn" onclick="checkPassword()">Submit ❤️</button>
-            <p class="password-error" id="passwordError"></p>
-        </div>
-        
-        <div class="content-screen hidden" id="contentScreen">
-        <h1 class="title">Happy Valentine's Day!</h1>
-        <button class="surprise-btn" id="surpriseBtn">Click for a Surprise!</button>
-        <div class="surprise-content hidden" id="surpriseContent">
-            <h2 class="voice-title">Listen to My Heart 🎧</h2>
-            <div class="voice-messages">
-                <div class="voice-card">
-                    <p class="voice-label">Jeena Jeena 💕</p>
-                    <audio controls controlsList="nodownload">
-                        <source src="media/voice/jeenajeena.m4a" type="audio/mp4">
-                        Your browser does not support audio.
-                    </audio>
-                </div>
-                <div class="voice-card">
-                    <p class="voice-label">Lae Dooba 💖</p>
-                    <audio controls controlsList="nodownload">
-                        <source src="media/voice/laedooba.m4a" type="audio/mp4">
-                        Your browser does not support audio.
-                    </audio>
-                </div>
-                <div class="voice-card">
-                    <p class="voice-label">My Confession 💗</p>
-                    <audio controls controlsList="nodownload">
-                        <source src="media/voice/confess.m4a" type="audio/mp4">
-                        Your browser does not support audio.
-                    </audio>
-                </div>
+    <div class="overlay"></div>
+    
+    <div class="music-player">
+        <button class="music-toggle" id="musicToggle" onclick="toggleMusic()">🔇</button>
+        <div class="music-info">Until I Found You</div>
+    </div>
+    
+    <div class="content">
+        <h1 class="main-title">This is for my fav creature, This is for Dits</h1>
+        <p class="subtitle">Shayad tumhei Pasand aaye</p>
+        <a href="page2.html" class="enter-btn">To aage badhein??? ❤️</a>
+        <div class="scroll-hint">ruko pehle neeche to dekho aur hai</div>
+    </div>
+    
+    <div class="words-section">
+        <div class="words-container">
+            <h2 class="words-title">SUNOOOOOOO</h2>
+            <p class="love-message">
+                Its 12:55 midnight, I have started making this website for you, IDK ye tumhei pasand ayega ya nahi
+            </p>
+            <p class="love-message">
+                But mai try kar raha hu ki kuch alag aur acha sa karu, Idk kitna time lagega banane mei aur ye tumhare uthne se pehle complete hoga
+                bhi ya nahi but mai try kar rha hu :(((( ki tumhare uthne se pehle complete ho jaaye
+            </p>
+            <div class="heart-icon">This is for you Dituuuuuuuuuuu.
+                Happy Valentine's Day
             </div>
-            <button class="continue-final-btn" onclick="location.href='proposal.html'">One More Thing... 💖</button>
-        </div>
+            <p class="love-message">
+                Thank you for being you, for loving me, and for making every day an adventure.
+            </p>
+            <p class="love-message">
+                I promise to cherish you, support you, and love you with all my heart, today and always.
+            </p>
+            <a href="page2.html" class="continue-btn">Ab upar jaake button click kro❤️</a>
         </div>
     </div>
-
-    <div class="start-screen" id="startScreen">
-        <div class="envelope" id="envelope">
-            <div class="envelope-flap"></div>
-            <div class="envelope-body"></div>
-            <div class="letter">Click to Open</div>
-        </div>
-        <p class="instruction">Click the envelope to open your surprise</p>
-    </div>
-
     <script src="music-player.js"></script>
-    <script src="script.js"></script>
 </body>
 </html>
